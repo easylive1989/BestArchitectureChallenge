@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
-import 'domain/bloc/post_cubit.dart';
+import 'bloc/post_cubit.dart';
 
 void main() async {
   configureInjection();

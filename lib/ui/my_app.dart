@@ -1,4 +1,4 @@
-import 'package:best_architecture_challenge/domain/bloc/post_cubit.dart';
+import 'package:best_architecture_challenge/bloc/post_cubit.dart';
 import 'package:best_architecture_challenge/ui/post/post_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
