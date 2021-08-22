@@ -4,5 +4,5 @@ import 'package:injectable/injectable.dart';
 class AppConfig {
   final String apiDomain;
 
-  AppConfig() : apiDomain = "jsonplaceholder.typicode.com";
+  AppConfig() : apiDomain = "http://jsonplaceholder.typicode.com";
 }
