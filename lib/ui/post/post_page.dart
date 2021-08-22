@@ -35,6 +35,14 @@ class _PostPageState extends State<PostPage> {
           if (state is PostLoadSuccess) {
             return PostListView(posts: state.posts);
           }
+          if (state is PostLoadFailure) {
+            return Center(
+              child: ElevatedButton(
+                child: Text("Reload"),
+                onPressed: () => context.read<PostCubit>().reload(),
+              ),
+            );
+          }
           return Center(
             child: CircularProgressIndicator(),
           );

@@ -1,6 +1,7 @@
 import 'package:best_architecture_challenge/bloc/post_cubit.dart';
 import 'package:best_architecture_challenge/domain/entity/post.dart';
 import 'package:best_architecture_challenge/domain/entity/sort_type.dart';
+import 'package:best_architecture_challenge/domain/exception/post_read_failed_exception.dart';
 import 'package:best_architecture_challenge/domain/use_case/post_service.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -22,7 +23,7 @@ void main() {
     'fetch empty post',
     build: () {
       givenPosts([]);
-      return PostCubit(postService: mockPostService);
+      return postCubit();
     },
     act: (bloc) => bloc.fetch(SortType.ByTitle),
     expect: () => [
@@ -38,7 +39,7 @@ void main() {
         post(id: 1),
         post(id: 2),
       ]);
-      return PostCubit(postService: mockPostService);
+      return postCubit();
     },
     act: (bloc) => bloc.fetch(SortType.ByTitle),
     expect: () => [
@@ -49,6 +50,25 @@ void main() {
       ]),
     ],
   );
+
+  blocTest<PostCubit, PostState>(
+    'fetch post fail',
+    build: () {
+      givenPostReadFailed();
+      return postCubit();
+    },
+    act: (bloc) => bloc.fetch(SortType.ByTitle),
+    expect: () => [
+      PostLoadInProgress(),
+      PostLoadFailure(SortType.ByTitle),
+    ],
+  );
+}
+
+PostCubit postCubit() => PostCubit(postService: mockPostService);
+
+void givenPostReadFailed() {
+  when(mockPostService.fetch(any)).thenThrow(PostReadFailedException());
 }
 
 void givenPosts(List<Post> value) {
