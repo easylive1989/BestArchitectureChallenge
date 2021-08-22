@@ -3,10 +3,10 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
 @singleton
-class PostRemoteApi {
+class PostApi {
   final Dio _dio;
 
-  PostRemoteApi({required AppConfig appConfig})
+  PostApi({required AppConfig appConfig})
       : _dio = Dio(BaseOptions(
           baseUrl: appConfig.apiDomain,
           connectTimeout: 5000,
