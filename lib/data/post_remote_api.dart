@@ -7,10 +7,10 @@ import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
 @Singleton(as: PostRepository)
-class PostApi implements PostRepository {
+class PostRemoteApi implements PostRepository {
   final String _domain;
 
-  PostApi({required AppConfig appConfig}) : _domain = appConfig.apiDomain;
+  PostRemoteApi({required AppConfig appConfig}) : _domain = appConfig.apiDomain;
 
   Future<List<Post>> fetch() async {
     var response = await http.get(Uri.https(_domain, '/posts'));
