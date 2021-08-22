@@ -2,12 +2,12 @@
 // in best_architecture_challenge/test/domain/bloc/post_cubit_test.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i3;
+import 'dart:async' as _i5;
 
 import 'package:best_architecture_challenge/domain/entity/post.dart' as _i4;
 import 'package:best_architecture_challenge/domain/entity/sort_type.dart'
-    as _i5;
-import 'package:best_architecture_challenge/domain/repository/post_repository.dart'
+    as _i3;
+import 'package:best_architecture_challenge/domain/use_case/post_service.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -19,19 +19,24 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: unnecessary_parenthesis
 
-/// A class which mocks [PostRepository].
+/// A class which mocks [PostService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockPostRepository extends _i1.Mock implements _i2.PostRepository {
-  MockPostRepository() {
+class MockPostService extends _i1.Mock implements _i2.PostService {
+  MockPostService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<List<_i4.Post>> fetch(_i5.SortType? sortType) =>
+  Map<_i3.SortType, int Function(_i4.Post, _i4.Post)> get sortRule =>
+      (super.noSuchMethod(Invocation.getter(#sortRule),
+              returnValue: <_i3.SortType, int Function(_i4.Post, _i4.Post)>{})
+          as Map<_i3.SortType, int Function(_i4.Post, _i4.Post)>);
+  @override
+  _i5.Future<List<_i4.Post>> fetch(_i3.SortType? sortType) =>
       (super.noSuchMethod(Invocation.method(#fetch, [sortType]),
               returnValue: Future<List<_i4.Post>>.value(<_i4.Post>[]))
-          as _i3.Future<List<_i4.Post>>);
+          as _i5.Future<List<_i4.Post>>);
   @override
   String toString() => super.toString();
 }

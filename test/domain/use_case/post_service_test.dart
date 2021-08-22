@@ -1,23 +1,23 @@
-import 'package:best_architecture_challenge/data/remote/post_api.dart';
-import 'package:best_architecture_challenge/data/repository/sorted_post_repository.dart';
 import 'package:best_architecture_challenge/domain/entity/post.dart';
 import 'package:best_architecture_challenge/domain/entity/sort_type.dart';
+import 'package:best_architecture_challenge/domain/repository/post_repository.dart';
+import 'package:best_architecture_challenge/domain/use_case/post_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
-import '../fixture.dart';
-import 'sorted_post_repository_test.mocks.dart';
+import '../../fixture.dart';
+import 'post_service_test.mocks.dart';
 
-@GenerateMocks([PostApi])
-late MockPostApi mockPostApi;
-late SortedPostRepository sortedPostRepository;
+@GenerateMocks([PostRepository])
+late PostRepository mockPostRepository;
+late PostService postService;
 
 void main() {
   setUp(() {
-    mockPostApi = MockPostApi();
-    sortedPostRepository = SortedPostRepository(postApi: mockPostApi);
+    mockPostRepository = MockPostRepository();
+    postService = PostService(postRepository: mockPostRepository);
   });
 
   test('sort empty list', () async {
@@ -55,12 +55,12 @@ void main() {
 }
 
 void givenPosts(List<Post> value) {
-  when(mockPostApi.fetchPosts()).thenAnswer((_) {
+  when(mockPostRepository.fetch()).thenAnswer((_) {
     return Future.value(value);
   });
 }
 
 Future<void> sortedPostsShouldBe(SortType sortType, List<Post> expected) async {
-  var posts = await sortedPostRepository.fetch(sortType);
+  var posts = await postService.fetch(sortType);
   expect(listEquals(posts, expected), true);
 }
