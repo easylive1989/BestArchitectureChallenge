@@ -7,7 +7,7 @@
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../bloc/post_cubit.dart' as _i6;
+import '../bloc/post/post_cubit.dart' as _i6;
 import '../data/external/post_api.dart' as _i7;
 import '../data/repository/post_api_adapter.dart' as _i8;
 import '../domain/repository/post_repository.dart' as _i5;

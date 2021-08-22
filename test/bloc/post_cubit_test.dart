@@ -1,4 +1,4 @@
-import 'package:best_architecture_challenge/bloc/post_cubit.dart';
+import 'package:best_architecture_challenge/bloc/post/post_cubit.dart';
 import 'package:best_architecture_challenge/domain/entity/post.dart';
 import 'package:best_architecture_challenge/domain/entity/sort_type.dart';
 import 'package:best_architecture_challenge/domain/exception/post_read_failed_exception.dart';
