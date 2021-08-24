@@ -18,7 +18,7 @@ class _PostPageState extends State<PostPage> {
   @override
   void initState() {
     super.initState();
-    context.read<PostCubit>().fetch(SortType.ById);
+    context.read<PostCubit>().fetch(SortType.byId);
   }
 
   @override

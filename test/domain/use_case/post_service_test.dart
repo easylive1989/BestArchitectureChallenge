@@ -1,14 +1,14 @@
-import 'package:best_architecture_challenge/domain/entity/post.dart';
-import 'package:best_architecture_challenge/domain/entity/sort_type.dart';
-import 'package:best_architecture_challenge/domain/repository/post_repository.dart';
-import 'package:best_architecture_challenge/domain/use_case/post_service.dart';
-import 'package:flutter/foundation.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
-import 'package:test/test.dart';
+import "package:best_architecture_challenge/domain/entity/post.dart";
+import "package:best_architecture_challenge/domain/entity/sort_type.dart";
+import "package:best_architecture_challenge/domain/repository/post_repository.dart";
+import "package:best_architecture_challenge/domain/use_case/post_service.dart";
+import "package:flutter/foundation.dart";
+import "package:mockito/annotations.dart";
+import "package:mockito/mockito.dart";
+import "package:test/test.dart";
 
-import '../../fixture.dart';
-import 'post_service_test.mocks.dart';
+import "../../fixture.dart";
+import "post_service_test.mocks.dart";
 
 @GenerateMocks([PostRepository])
 late PostRepository mockPostRepository;
@@ -20,33 +20,33 @@ void main() {
     postService = PostService(postRepository: mockPostRepository);
   });
 
-  test('sort empty list', () async {
+  test("sort empty list", () async {
     givenPosts([]);
-    await sortedPostsShouldBe(SortType.ById, []);
+    await sortedPostsShouldBe(SortType.byId, []);
   });
 
-  test('sort post by id', () async {
+  test("sort post by id", () async {
     givenPosts([
       post(id: 3),
       post(id: 2),
       post(id: 1),
     ]);
 
-    await sortedPostsShouldBe(SortType.ById, [
+    await sortedPostsShouldBe(SortType.byId, [
       post(id: 1),
       post(id: 2),
       post(id: 3),
     ]);
   });
 
-  test('sort post by title', () async {
+  test("sort post by title", () async {
     givenPosts([
       post(id: 3, title: "first one"),
       post(id: 2, title: "apple"),
       post(id: 1, title: "zoo is good"),
     ]);
 
-    await sortedPostsShouldBe(SortType.ByTitle, [
+    await sortedPostsShouldBe(SortType.byTitle, [
       post(id: 2, title: "apple"),
       post(id: 3, title: "first one"),
       post(id: 1, title: "zoo is good"),

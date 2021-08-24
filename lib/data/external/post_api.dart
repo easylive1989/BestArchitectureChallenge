@@ -1,6 +1,6 @@
-import 'package:best_architecture_challenge/app/app_config.dart';
-import 'package:dio/dio.dart';
-import 'package:injectable/injectable.dart';
+import "package:best_architecture_challenge/app/app_config.dart";
+import "package:dio/dio.dart";
+import "package:injectable/injectable.dart";
 
 @singleton
 class PostApi {

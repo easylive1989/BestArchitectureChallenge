@@ -1,15 +1,15 @@
-import 'package:best_architecture_challenge/bloc/post/post_cubit.dart';
-import 'package:best_architecture_challenge/domain/entity/post.dart';
-import 'package:best_architecture_challenge/domain/entity/sort_type.dart';
-import 'package:best_architecture_challenge/domain/exception/post_read_failed_exception.dart';
-import 'package:best_architecture_challenge/domain/use_case/post_service.dart';
-import 'package:bloc_test/bloc_test.dart';
-import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
-import 'package:mockito/mockito.dart';
+import "package:best_architecture_challenge/bloc/post/post_cubit.dart";
+import "package:best_architecture_challenge/domain/entity/post.dart";
+import "package:best_architecture_challenge/domain/entity/sort_type.dart";
+import "package:best_architecture_challenge/domain/exception/post_read_failed_exception.dart";
+import "package:best_architecture_challenge/domain/use_case/post_service.dart";
+import "package:bloc_test/bloc_test.dart";
+import "package:flutter_test/flutter_test.dart";
+import "package:mockito/annotations.dart";
+import "package:mockito/mockito.dart";
 
-import '../fixture.dart';
-import 'post_cubit_test.mocks.dart';
+import "../fixture.dart";
+import "post_cubit_test.mocks.dart";
 
 late MockPostService mockPostService;
 
@@ -25,7 +25,7 @@ void main() {
       givenPosts([]);
       return postCubit();
     },
-    act: (bloc) => bloc.fetch(SortType.ByTitle),
+    act: (bloc) => bloc.fetch(SortType.byTitle),
     expect: () => [
       PostLoadInProgress(),
       PostLoadSuccess([]),
@@ -41,7 +41,7 @@ void main() {
       ]);
       return postCubit();
     },
-    act: (bloc) => bloc.fetch(SortType.ByTitle),
+    act: (bloc) => bloc.fetch(SortType.byTitle),
     expect: () => [
       PostLoadInProgress(),
       PostLoadSuccess([
@@ -57,10 +57,10 @@ void main() {
       givenPostReadFailed();
       return postCubit();
     },
-    act: (bloc) => bloc.fetch(SortType.ByTitle),
+    act: (bloc) => bloc.fetch(SortType.byTitle),
     expect: () => [
       PostLoadInProgress(),
-      PostLoadFailure(SortType.ByTitle),
+      PostLoadFailure(SortType.byTitle),
     ],
   );
 }

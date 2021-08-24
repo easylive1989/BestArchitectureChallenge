@@ -1,7 +1,7 @@
-import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
+import "package:equatable/equatable.dart";
+import "package:json_annotation/json_annotation.dart";
 
-part 'post.g.dart';
+part "post.g.dart";
 
 @JsonSerializable()
 class Post extends Equatable {
@@ -10,7 +10,7 @@ class Post extends Equatable {
   final String title;
   final String body;
 
-  Post({
+  const Post({
     required this.userId,
     required this.id,
     required this.title,

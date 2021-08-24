@@ -1,16 +1,16 @@
-import 'package:best_architecture_challenge/domain/entity/post.dart';
-import 'package:best_architecture_challenge/domain/entity/sort_type.dart';
-import 'package:best_architecture_challenge/domain/exception/post_read_failed_exception.dart';
-import 'package:best_architecture_challenge/domain/use_case/post_service.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
+import "package:best_architecture_challenge/domain/entity/post.dart";
+import "package:best_architecture_challenge/domain/entity/sort_type.dart";
+import "package:best_architecture_challenge/domain/exception/post_read_failed_exception.dart";
+import "package:best_architecture_challenge/domain/use_case/post_service.dart";
+import "package:equatable/equatable.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:injectable/injectable.dart";
 
-part 'post_state.dart';
+part "post_state.dart";
 
 @injectable
 class PostCubit extends Cubit<PostState> {
-  PostService _postService;
+  final PostService _postService;
 
   PostCubit({required PostService postService})
       : _postService = postService,

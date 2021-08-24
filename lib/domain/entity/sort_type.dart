@@ -1,4 +1,4 @@
 enum SortType {
-  ByTitle,
-  ById,
+  byTitle,
+  byId,
 }

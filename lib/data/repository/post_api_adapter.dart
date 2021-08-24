@@ -1,8 +1,8 @@
-import 'package:best_architecture_challenge/data/external/post_api.dart';
-import 'package:best_architecture_challenge/domain/entity/post.dart';
-import 'package:best_architecture_challenge/domain/exception/post_read_failed_exception.dart';
-import 'package:best_architecture_challenge/domain/repository/post_repository.dart';
-import 'package:injectable/injectable.dart';
+import "package:best_architecture_challenge/data/external/post_api.dart";
+import "package:best_architecture_challenge/domain/entity/post.dart";
+import "package:best_architecture_challenge/domain/exception/post_read_failed_exception.dart";
+import "package:best_architecture_challenge/domain/repository/post_repository.dart";
+import "package:injectable/injectable.dart";
 
 @Singleton(as: PostRepository)
 class PostApiAdapter implements PostRepository {

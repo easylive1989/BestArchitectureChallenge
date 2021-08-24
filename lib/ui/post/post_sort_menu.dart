@@ -16,12 +16,12 @@ class PostSortMenu extends StatelessWidget {
         PopupMenuItem(
           child: Text('使用id排序'),
           key: ValueKey("menu_sort_by_id"),
-          value: SortType.ById,
+          value: SortType.byId,
         ),
         PopupMenuItem(
           child: Text('使用title排序'),
           key: ValueKey("menu_sort_by_title"),
-          value: SortType.ByTitle,
+          value: SortType.byTitle,
         )
       ],
       onSelected: (SortType sortType) {

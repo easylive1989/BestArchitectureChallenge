@@ -1,10 +1,10 @@
-import 'package:best_architecture_challenge/app/injection.dart';
-import 'package:best_architecture_challenge/ui/my_app.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
+import "package:best_architecture_challenge/app/injection.dart";
+import "package:best_architecture_challenge/ui/my_app.dart";
+import "package:flutter/cupertino.dart";
+import "package:flutter/material.dart";
+import "package:get_it/get_it.dart";
 
-import 'bloc/post/post_cubit.dart';
+import "bloc/post/post_cubit.dart";
 
 void main() async {
   configureInjection();

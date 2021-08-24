@@ -1,4 +1,4 @@
-part of 'post_cubit.dart';
+part of "post_cubit.dart";
 
 class PostState extends Equatable {
   @override

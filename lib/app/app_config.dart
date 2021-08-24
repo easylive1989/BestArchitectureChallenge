@@ -1,4 +1,4 @@
-import 'package:injectable/injectable.dart';
+import "package:injectable/injectable.dart";
 
 @injectable
 class AppConfig {
