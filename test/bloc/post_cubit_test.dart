@@ -20,26 +20,26 @@ void main() {
   });
 
   blocTest<PostCubit, PostState>(
-    'fetch empty post',
+    "fetch empty post",
     build: () {
       givenPosts([]);
-      return postCubit();
+      return getPostCubit();
     },
     act: (bloc) => bloc.fetch(SortType.byTitle),
     expect: () => [
       PostLoadInProgress(),
-      PostLoadSuccess([]),
+      PostLoadSuccess(List.empty()),
     ],
   );
 
   blocTest<PostCubit, PostState>(
-    'fetch non empty post',
+    "fetch non empty post",
     build: () {
       givenPosts([
         post(id: 1),
         post(id: 2),
       ]);
-      return postCubit();
+      return getPostCubit();
     },
     act: (bloc) => bloc.fetch(SortType.byTitle),
     expect: () => [
@@ -52,10 +52,10 @@ void main() {
   );
 
   blocTest<PostCubit, PostState>(
-    'fetch post fail',
+    "fetch post fail",
     build: () {
       givenPostReadFailed();
-      return postCubit();
+      return getPostCubit();
     },
     act: (bloc) => bloc.fetch(SortType.byTitle),
     expect: () => [
@@ -63,9 +63,33 @@ void main() {
       PostLoadFailure(SortType.byTitle),
     ],
   );
+
+  blocTest<PostCubit, PostState>(
+    "should not reload if not fail before",
+    build: () {
+      return getPostCubit();
+    },
+    act: (bloc) => bloc.reload(),
+    expect: () => [],
+  );
+
+  blocTest<PostCubit, PostState>(
+    "should reload if fail before",
+    build: () {
+      givenPosts([]);
+      var postCubit = getPostCubit();
+      postCubit.emit(PostLoadFailure(SortType.byId));
+      return postCubit;
+    },
+    act: (bloc) => bloc.reload(),
+    expect: () => [
+      PostLoadInProgress(),
+      PostLoadSuccess(List.empty()),
+    ],
+  );
 }
 
-PostCubit postCubit() => PostCubit(postService: mockPostService);
+PostCubit getPostCubit() => PostCubit(postService: mockPostService);
 
 void givenPostReadFailed() {
   when(mockPostService.fetch(any)).thenThrow(PostReadFailedException());

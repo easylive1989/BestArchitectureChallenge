@@ -26,7 +26,7 @@ class _PostPageState extends State<PostPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        actions: <Widget>[
+        actions: const <Widget>[
           PostSortMenu(),
         ],
       ),
@@ -38,12 +38,12 @@ class _PostPageState extends State<PostPage> {
           if (state is PostLoadFailure) {
             return Center(
               child: ElevatedButton(
-                child: Text("Reload"),
+                child: const Text("Reload"),
                 onPressed: () => context.read<PostCubit>().reload(),
               ),
             );
           }
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         },
